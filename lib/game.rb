@@ -8,13 +8,12 @@ class Game
     @enemies = []
 
     nb_enemy.times do |i|
-      @enemies << Player.new("ennemi_#{i + 1}")
+      @enemies << Player.new("ennemi_#{i}")
     end
   end
 
   def kill_enemy(enemy)
-    puts enemy.name
-    @enemies.delete(enemy.name.to_s)
+    @enemies.delete(enemy)
   end
 
   def is_still_ongoing?
@@ -41,7 +40,7 @@ class Game
       puts '→ Attaquer un joueur en vue :'
 
       @enemies.each { |enemy| 
-        puts "    #{index + 1} - " + enemy.show_state + "\n" if enemy.life_points.positive?
+        puts "    #{index} - " + enemy.show_state + "\n" if enemy.life_points.positive?
 
         index +=1
       }
@@ -60,19 +59,19 @@ class Game
     when 's'
       @human_player.search_health_pack
 
-    when '1'
+    when '0'
       @human_player.attacks(@enemies[0])
       kill_enemy(@enemies[0]) if @enemies[0].life_points.negative?
 
-    when '2'
+    when '1'
       @human_player.attacks(@enemies[1])
       kill_enemy(@enemies[1]) if @enemies[1].life_points.negative?
 
-    when '3'
+    when '2'
       @human_player.attacks(@enemies[2])
       kill_enemy(@enemies[2]) if @enemies[2].life_points.negative?
 
-    when '4'
+    when '3'
       @human_player.attacks(@enemies[3])
       kill_enemy(@enemies[3]) if @enemies[3].life_points.negative?
 
