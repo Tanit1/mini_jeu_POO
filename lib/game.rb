@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: BUG KILL PLAYER
 class Game
   attr_accessor :human_player, :enemies
 
